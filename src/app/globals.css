@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide print-only elements on screen */
+.print-only {
+  display: none !important;
+}
+
+/* Print Stylesheet for 100% vector, watermark-free, input-free PDF output */
+@media print {
+  /* 1. Hide interactive page elements completely */
+  .no-print,
+  header,
+  footer,
+  nav,
+  aside,
+  button,
+  .no-print * {
+    display: none !important;
+  }
+
+  /* 2. Hide everything in the body by default */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* 3. Reveal ONLY the dedicated non-interactive printable invoice */
+  #invoice-print,
+  #invoice-print * {
+    visibility: visible !important;
+  }
+
+  #invoice-print {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    min-height: 100% !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 11pt !important;
+  }
+
+  /* Force exact color and background reproduction */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Page break rules */
+  .print-break-inside-avoid,
+  tr,
+  .line-item-row {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 12mm 15mm;
+  }
+}

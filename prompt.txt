@@ -1,0 +1,131 @@
+Fix the following mobile UX issues in the invoice editor.
+
+1. Currency Selector Overflow
+
+On mobile, when I tap the Currency selector and the currency search/dropdown opens, the search box/dropdown is slightly overflowing outside the left side of the viewport and gets cut off.
+
+Fix the underlying positioning/responsive issue.
+
+Requirements:
+
+Dropdown must always stay completely inside the viewport.
+No horizontal overflow.
+Search input must be fully visible.
+Dropdown width should adapt to the available screen width.
+On very small screens (320px/375px), it must still fit.
+Do not use a fixed desktop width that causes mobile overflow.
+Handle dropdown positioning intelligently so it can open left/right/up when necessary.
+Make sure the dropdown doesn't get clipped by a parent with overflow: hidden.
+Keep the desktop appearance unchanged.
+
+Test at:
+
+320px
+375px
+390px
+414px
+2. Color / Theme Picker Not Opening on Mobile
+
+On mobile, when I tap the Color / Theme / Accent Color option, nothing opens.
+
+Investigate why the color picker/popover is not opening on touch/mobile.
+
+It must work properly with:
+
+Mobile tap
+Desktop click
+Touch events
+Keyboard accessibility
+
+The color picker should open as a proper mobile-friendly popover/bottom sheet.
+
+Recommended mobile behavior
+
+Instead of forcing a tiny desktop dropdown on mobile:
+
+┌────────────────────────────┐
+│ Choose accent color      ✕ │
+├────────────────────────────┤
+│                            │
+│  ● Indigo    ● Emerald     │
+│  ● Violet    ● Rose        │
+│  ● Amber     ● Slate       │
+│                            │
+│  Custom color              │
+│  [ #2563EB ] [ Color ]     │
+│                            │
+│          Done              │
+└────────────────────────────┘
+
+
+On mobile, use a bottom sheet or centered modal with enough spacing for touch.
+
+Requirements:
+
+Minimum 44px touch targets
+Color swatches clearly visible
+Selected color has obvious visual indicator
+Custom HEX color input works
+Native color input works where appropriate
+Tapping outside closes it
+Escape closes it on desktop
+Selecting a color immediately updates the invoice preview
+Works across all 5 templates
+Does not cause page horizontal scrolling
+3. General Mobile Dropdown/Popover Audit
+
+While fixing these two issues, inspect the other popovers/dropdowns in the editor too:
+
+Currency selector
+Template selector
+Color picker
+Any date picker
+Any menus/dialogs
+
+Make sure none of them:
+
+Go outside the viewport
+Get clipped
+Open behind another component
+Become inaccessible on touch
+Require horizontal scrolling
+Have tiny tap targets
+
+Use proper responsive positioning and z-index/portal handling where appropriate.
+
+4. Mobile Typography & Spacing
+
+Keep the mobile UI compact and professional.
+
+Slightly reduce oversized:
+
+Headings
+Section titles
+Dropdown text
+Toolbar text
+Button labels
+
+But do NOT make form inputs or buttons too small.
+
+Prioritize:
+
+Readable text + comfortable touch targets + compact layout.
+
+5. Important
+
+Do not just add random left: 0, negative margins, or hardcoded pixel offsets to hide the problem.
+
+Find the actual cause of the overflow/opening issue and fix the component responsively.
+
+After fixing, test the entire /create page on:
+
+320px
+375px
+390px
+414px
+768px
+Desktop
+
+Verify there is zero horizontal scrolling and all interactive controls work with touch.
+
+Do not break the existing invoice functionality, templates, PDF download, localStorage, or desktop UI.
