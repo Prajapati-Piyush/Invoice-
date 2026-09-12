@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { SITE_URL, GOOGLE_SITE_VERIFICATION } from "@/lib/site-config";
 
 export const viewport: Viewport = {
   themeColor: "#2563EB",
@@ -9,7 +10,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://invoxa.app"),
+  metadataBase: new URL(SITE_URL),
+  verification: {
+    google: GOOGLE_SITE_VERIFICATION,
+  },
   title: {
     default: "Invoxa – Free Invoice Maker | No Signup, No Watermark",
     template: "%s | Invoxa",
@@ -42,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://invoxa.app",
+    url: SITE_URL,
     siteName: "Invoxa",
     title: "Invoxa – Free Invoice Maker | No Signup, No Watermark",
     description:

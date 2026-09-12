@@ -11,6 +11,7 @@ import { FaqSection } from '@/components/landing/FaqSection';
 import { FAQ_DATA } from '@/lib/faq-data';
 import { CtaBanner } from '@/components/landing/CtaBanner';
 import { LandingFooter } from '@/components/landing/LandingFooter';
+import { SITE_URL } from '@/lib/site-config';
 
 export const metadata: Metadata = {
   title: 'Invoxa – Free Invoice Maker | No Signup, No Watermark, Private & Fast',
@@ -27,13 +28,13 @@ export const metadata: Metadata = {
     'invoice maker for small business',
   ],
   alternates: {
-    canonical: 'https://invoxa.app',
+    canonical: SITE_URL,
   },
   openGraph: {
     title: 'Invoxa – Free Invoice Maker (No Signup, No Watermark)',
     description:
       'The modern, privacy-first invoice maker for freelancers and small businesses. Create pixel-perfect vector PDF invoices instantly.',
-    url: 'https://invoxa.app',
+    url: SITE_URL,
     siteName: 'Invoxa',
     locale: 'en_US',
     type: 'website',
@@ -80,15 +81,15 @@ export default function LandingPage() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Invoxa',
-    url: 'https://invoxa.app',
+    url: SITE_URL,
   };
 
   const jsonLdOrganization = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Invoxa',
-    url: 'https://invoxa.app',
-    logo: 'https://invoxa.app/icon.svg',
+    url: SITE_URL,
+    logo: `${SITE_URL}/icon.svg`,
     description: 'Privacy-focused business invoicing software and free PDF invoice maker.',
   };
 
